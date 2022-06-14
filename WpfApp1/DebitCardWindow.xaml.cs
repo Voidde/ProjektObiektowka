@@ -10,25 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WpfApp1
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logika interakcji dla klasy DebitCardWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DebitCardWindow : Window
     {
-        public MainWindow()
+        public DebitCardWindow()
         {
             InitializeComponent();
-        }
-
-        private void Transfer_Button_Click(object sender, RoutedEventArgs e)
-        {
-            TransactionWindows transactionWindows = new TransactionWindows();
-            transactionWindows.Show();
         }
     }
 }

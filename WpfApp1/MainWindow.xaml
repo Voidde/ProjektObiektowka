@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="900" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="19*"/>
+            <ColumnDefinition Width="81*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="Hello_label" Content="JW-GW Bank" Margin="10,0,-10,0" FontSize="40" FontFamily="Segoe UI Emoji" Grid.ColumnSpan="2"/>
+        <TextBox Text="Imie i nazwisko" TextWrapping="Wrap" Margin="99,10,372,525" UndoLimit="98" FontSize="30" Grid.Column="1" IsEnabled="False"/>
+        <ComboBox x:Name="Transactions_ComboBox" Margin="10,71,372,0" Grid.ColumnSpan="2"/>
+        <Button x:Name="Transfer_Button" Content="Przelew/Transfer" Margin="397,12,26,509" FontSize="30" Grid.Column="1" Click="Transfer_Button_Click"/>
+        <Button x:Name="Mobile_Button" Content="Doladuj telefon" Margin="397,97,179,435" Grid.Column="1"/>
+        <Button x:Name="DebitCard_Button" Content="Twoja karta" Grid.Column="1" Margin="572,97,26,435" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <TextBox x:Name="AccountBalance_TextBox" Text="Stan konta:" TextWrapping="Wrap" Margin="397,370,26,148" Grid.Column="1" FlowDirection="LeftToRight" FontSize="30" IsEnabled="False"/>
+
     </Grid>
 </Window>
