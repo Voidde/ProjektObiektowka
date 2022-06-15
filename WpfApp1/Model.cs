@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 using Microsoft.EntityFrameworkCore;
 namespace WpfApp1
@@ -27,10 +29,11 @@ namespace WpfApp1
             options.UseSqlServer(this.ConnectionString);
         }
     }
-
+  
     public class Users
     {
         public long UserID { get; set; }
+        [Key]
         public string Imie{ get; set; }
         public string Nazwisko { get; set; }
         public string Pesel { get; set; }
@@ -42,6 +45,7 @@ namespace WpfApp1
     public class Przelewy
     {
         public int PrzelewID { get; set; }
+        [Key]
         public int UserID { get; set; }
         public DateTime DataPrzelewu {get; set; }
         public long Kwota { get; set; }
@@ -51,13 +55,17 @@ namespace WpfApp1
     {
         public int UserID { get; set; }
         public string NrKarty { get; set; }
+        [Key]
         public DateTime DataWaznosci { get; set; }
         public string CVV { get; set; }
     }
     public class Adresy
     {
+       
         public int UserID { get; set; }
+       
         public string Adres { get; set; }
+        [Key]
         public string Miasto { get; set; }
         public string KodPocztowy { get; set; }
     }
