@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
 using Microsoft.EntityFrameworkCore;
+
 namespace WpfApp1
 {
     public class DatabaseContext : DbContext
@@ -32,20 +32,23 @@ namespace WpfApp1
   
     public class Users
     {
-        public long UserID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
+        public int UserID { get; set; }
+      
         public string Imie{ get; set; }
         public string Nazwisko { get; set; }
         public string Pesel { get; set; }
         public string NrTel { get; set; }
         public string Haslo { get; set; }
-        public string Saldo { get; set; }
+        public long Saldo { get; set; }
 
     }
     public class Przelewy
     {
-        public int PrzelewID { get; set; }
         [Key]
+        public int PrzelewID { get; set; }
+     
         public int UserID { get; set; }
         public DateTime DataPrzelewu {get; set; }
         public long Kwota { get; set; }
@@ -54,18 +57,19 @@ namespace WpfApp1
     public class Karty
     {
         public int UserID { get; set; }
-        public string NrKarty { get; set; }
         [Key]
+        public string NrKarty { get; set; }
+       
         public DateTime DataWaznosci { get; set; }
         public string CVV { get; set; }
     }
     public class Adresy
     {
-       
+        [Key]
         public int UserID { get; set; }
        
         public string Adres { get; set; }
-        [Key]
+      
         public string Miasto { get; set; }
         public string KodPocztowy { get; set; }
     }

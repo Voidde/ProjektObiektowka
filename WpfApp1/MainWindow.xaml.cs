@@ -29,7 +29,7 @@ namespace WpfApp1
                 // Hint: change `DESKTOP-123ABC\SQLEXPRESS` to your server name
                 //       alternatively use `localhost` or `localhost\SQLEXPRESS`
 
-                string connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=blogdb;Integrated Security=True";
+                string connectionString = @"Data Source=LAPTOP-VHLI3BSD\SQLEXPRESS;Initial Catalog=LocalDB;Integrated Security=True";
 
                 using (DatabaseContext db = new DatabaseContext(connectionString))
                 {
