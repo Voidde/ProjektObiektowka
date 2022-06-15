@@ -11,7 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using System.Data.SqlClient;
+using System.Data.Sql;
+using System.Data;
+using Microsoft.EntityFrameworkCore;
 namespace WpfApp1
 {
     /// <summary>
@@ -25,14 +28,38 @@ namespace WpfApp1
         }
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mw = new MainWindow();
-            mw.Show();
-            this.Close();
-            if(txtPesel.Text =="admin" )
+            SqlConnection s = new SqlConnection(@"Data Source=localhost;Initial Catalog=LocalDB;Integrated Security=True");
+
+            try
             {
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                mw.Close();
+                if (s.State == ConnectionState.Closed)
+                {
+                    s.Open();
+                }
+                string query = "SELECT COUNT(1) FROM Users WHERE Pesel ='" + txtPesel.Text + "' AND Haslo ='" + txtPassword.Password + "'" + ";
+                
+                SqlCommand sc = new SqlCommand(query, s);
+                sc.CommandType = CommandType.Text;
+                int count = Convert.ToInt32(sc.ExecuteScalar());
+                if (count == 1)
+                {
+                    MainWindow mw = new MainWindow();
+                    mw.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Błędne login lub hasło.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                s.Close();
             }
         }
 

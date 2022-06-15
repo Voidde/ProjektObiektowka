@@ -12,7 +12,7 @@
             <ColumnDefinition Width="81*"/>
         </Grid.ColumnDefinitions>
         <Label x:Name="Hello_label" Content="JW-GW Bank" Margin="10,0,-10,0" FontSize="40" FontFamily="Segoe UI Emoji" Grid.ColumnSpan="2"/>
-        <TextBox Text="Imie i nazwisko" TextWrapping="Wrap" Margin="99,10,372,525" UndoLimit="98" FontSize="30" Grid.Column="1" IsEnabled="False"/>
+        <TextBox Name="IN" Text="Imie i nazwisko" TextWrapping="Wrap" Margin="99,10,372,525" UndoLimit="98" FontSize="30" Grid.Column="1" IsEnabled="False" TextChanged="IN_TextChanged"/>
         <ComboBox x:Name="Transactions_ComboBox" Margin="10,71,372,0" Grid.ColumnSpan="2"/>
         <Button x:Name="Transfer_Button" Content="Przelew/Transfer" Margin="397,12,26,509" FontSize="30" Grid.Column="1" Click="Transfer_Button_Click"/>
         <Button x:Name="Mobile_Button" Content="Doladuj telefon" Margin="397,97,179,435" Grid.Column="1"/>

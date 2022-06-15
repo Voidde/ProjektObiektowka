@@ -29,14 +29,10 @@ namespace WpfApp1
                 // Hint: change `DESKTOP-123ABC\SQLEXPRESS` to your server name
                 //       alternatively use `localhost` or `localhost\SQLEXPRESS`
 
-                string connectionString = @"Data Source=LAPTOP-VHLI3BSD\SQLEXPRESS;Initial Catalog=LocalDB;Integrated Security=True";
+                string connectionString = @"Data Source=localhost;Initial Catalog=LocalDB;Integrated Security=True";
 
                 using (DatabaseContext db = new DatabaseContext(connectionString))
                 {
-                    MessageBox.Show($"Database ConnectionString: {db.ConnectionString}.");
-
-                 
-
 
                 }
             
@@ -54,6 +50,11 @@ namespace WpfApp1
         {
             DebitCardWindow debitCardWindow = new DebitCardWindow();
             debitCardWindow.Show();
+        }
+
+        private void IN_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
