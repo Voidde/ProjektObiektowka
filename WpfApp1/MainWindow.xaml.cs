@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,15 +21,39 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
-        }
+            
+                // Hint: change `DESKTOP-123ABC\SQLEXPRESS` to your server name
+                //       alternatively use `localhost` or `localhost\SQLEXPRESS`
 
+                string connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=blogdb;Integrated Security=True";
+
+                using (DatabaseContext db = new DatabaseContext(connectionString))
+                {
+                    MessageBox.Show($"Database ConnectionString: {db.ConnectionString}.");
+
+
+
+
+                }
+            
+        
+
+    }
+        // Transfer button which open TransactionWindow
         private void Transfer_Button_Click(object sender, RoutedEventArgs e)
         {
             TransactionWindows transactionWindows = new TransactionWindows();
             transactionWindows.Show();
+        }
+
+        private void DebitCard_Button_Click(object sender, RoutedEventArgs e)
+        {
+            DebitCardWindow debitCardWindow = new DebitCardWindow();
+            debitCardWindow.Show();
         }
     }
 }

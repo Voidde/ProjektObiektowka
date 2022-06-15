@@ -28,6 +28,12 @@ namespace WpfApp1
             MainWindow mw = new MainWindow();
             mw.Show();
             this.Close();
+            if(txtPesel.Text =="admin" )
+            {
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                mw.Close();
+            }
         }
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
