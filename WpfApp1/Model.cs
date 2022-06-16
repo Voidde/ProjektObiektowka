@@ -49,11 +49,14 @@ namespace WpfApp1
     public class Przelewy
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PrzelewID { get; set; }
      
         public int UserID { get; set; }
         public DateTime DataPrzelewu {get; set; }
         public long Kwota { get; set; }
+
+        public string NaKonto { get; set; }
 
     }
     public class Karty

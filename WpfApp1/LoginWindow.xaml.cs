@@ -66,7 +66,7 @@ namespace WpfApp1
                         mw.ExpDate_TextBox.Text = db.Karty.Where(x => x.UserID.Equals(UID)).Select(x => x.DataWaznosci).FirstOrDefault().ToString().Substring(0,10);
                         mw.CardOwner_TextBox.Text = $"{db.Users.Where(x => x.Pesel.Equals(txtPesel.Text)).Select(x => x.Imie).FirstOrDefault()} { db.Users.Where(x => x.Pesel.Equals(txtPesel.Text)).Select(x => x.Nazwisko).FirstOrDefault()}";
 
-                       // long balance = db.Users.Where(x => x.Pesel.Equals(txtPesel.Text)).Select(x => x.Saldo).First();
+                        //long balance = db.Users.Where(x => x.Pesel.Equals(txtPesel.Text)).Select(x => x.Saldo).First();
 
                         //mw.AccountBalance_TextBox.Text = balance.ToString();
 
