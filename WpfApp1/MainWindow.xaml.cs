@@ -15,7 +15,7 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        public int user;
+    
         public MainWindow()
         {
             InitializeComponent();
@@ -25,14 +25,12 @@ namespace WpfApp1
         // Transfer button which open TransactionWindow
         private void Transfer_Button_Click(object sender, RoutedEventArgs e)
         {
-            TransactionWindows transactionWindows = new TransactionWindows();
-            transactionWindows.Show();
+          
         }
 
         private void DebitCard_Button_Click(object sender, RoutedEventArgs e)
         {
-            DebitCardWindow debitCardWindow = new DebitCardWindow();
-            debitCardWindow.Show();
+           
         }
 
         private void IN_TextChanged(object sender, TextChangedEventArgs e)

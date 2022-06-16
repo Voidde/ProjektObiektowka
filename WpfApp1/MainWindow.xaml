@@ -5,31 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="900" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="800" Width="1200" WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="19*"/>
             <ColumnDefinition Width="81*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="Hello_label" Margin="10,0,-10,0" FontSize="40" FontFamily="Segoe UI Emoji" Grid.ColumnSpan="2">
-            <Image Height="53" Source="iconmonstr-globe-5-120.png" Stretch="Fill" Width="69"/>
-        </Label>
-        <TextBox Name="IN" Text="Imie i nazwisko" TextWrapping="Wrap" Margin="99.4,10,371.6,499.4" UndoLimit="98" FontSize="30" Grid.Column="1" IsEnabled="False" TextChanged="IN_TextChanged"/>
-        <ComboBox x:Name="Transactions_ComboBox" Margin="10,71,372,0" Grid.ColumnSpan="2"/>
-        <Button x:Name="Transfer_Button" Content="Przelew/Transfer" Margin="397,12,26,509" FontSize="30" Grid.Column="1" Click="Transfer_Button_Click"/>
-        <Button x:Name="Mobile_Button" Content="Doladuj telefon" Margin="397,97,179,435" Grid.Column="1"/>
-        <Button x:Name="DebitCard_Button" Content="Twoja karta" Grid.Column="1" Margin="572,97,26,435" RenderTransformOrigin="0.5,0.5" Click="DebitCard_Button_Click">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleY="0"/>
-                    <RotateTransform/>
-                    <TranslateTransform Y="0"/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
-        <TextBox x:Name="AccountBalance_TextBox" Text="Stan konta:" TextWrapping="Wrap" Margin="397,370,26,148" Grid.Column="1" FlowDirection="LeftToRight" FontSize="30" IsEnabled="False"/>
+
+        <TextBox Name="IN" Text="Imie i nazwisko" TextWrapping="Wrap" Margin="423.6,655,9.6,69.4" UndoLimit="98" FontSize="30" Grid.Column="1" IsEnabled="False" TextChanged="IN_TextChanged"/>
+        <ComboBox x:Name="Transactions_ComboBox" Margin="634.6,10,9.6,336.4" Grid.Column="1"/>
+        <TextBox x:Name="AccountBalance_TextBox" Text="Stan konta:" TextWrapping="Wrap" Margin="423.6,706,-0.4,0.4" Grid.Column="1" FlowDirection="LeftToRight" FontSize="30" IsEnabled="False"/>
+        <Rectangle Fill="#FFD8D8EB" HorizontalAlignment="Left" Height="190" Stroke="Black" VerticalAlignment="Center" Width="570" Margin="10,10,0,570.4" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="CardNum_TextBox" Text="1234 1234 1234 1234" TextAlignment="Center" TextWrapping="Wrap" Margin="46,31,642.6,705.4" BorderBrush="#FFAEBDEB" Background="White" FontSize="20" VerticalAlignment="Center" Height="34" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="CardOwner_TextBox"  HorizontalAlignment="Left" Height="36" TextWrapping="Wrap" Text="Imię i nazwisko" VerticalAlignment="Top" Width="291" FontSize="20" Margin="46,83,0,0" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="ExpDate_TextBox" HorizontalAlignment="Left" Height="36" TextWrapping="Wrap" Text="Data ważności" VerticalAlignment="Top" Width="179" FontSize="20" Margin="145.6,83,0,0" Grid.Column="1"/>
+        <TextBox x:Name="CVV_TextBox" HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" Text="CVV" VerticalAlignment="Top" Width="97" FontSize="20" Margin="227.6,138,0,0" Grid.Column="1"/>
+        <TextBox x:Name="AccountNumber_Button" Text="Podaj numer konta na który chcesz wykonać przelew" TextWrapping="Wrap" Margin="10,309,639.6,402.4" FontSize="20" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="Amount_button" Text="Podaj kwote przelewu" TextWrapping="Wrap" Margin="10,392,639.6,320.4" FontSize="20" RenderTransformOrigin="0.806,0.37" Grid.ColumnSpan="2"/>
+        <DatePicker Margin="10,468,639.6,243.4" Grid.ColumnSpan="2"/>
+        <Button Content="Zatwierdź" Margin="10,550,835.6,174.4" Grid.ColumnSpan="2"/>
+        <Image Grid.Column="1" Margin="448.6,10,398.6,640.4" Source="iconmonstr-globe-5-120.png" Stretch="Fill"/>
 
     </Grid>
 </Window>

@@ -68,9 +68,12 @@ namespace WpfApp1
         {
             string label = "";
             long balance = 0;
-            int userID = 0;
+            var CardNumber = RandomDigits(11);
+            var cvv = RandomDigits(3);
+            var ExpDate = DateTime.Now.AddYears(5);
             using (DatabaseContext db = new DatabaseContext(@"Data Source=LAPTOP-VHLI3BSD\SQLEXPRESS;Initial Catalog=LocalDB;Integrated Security=True"))
             {
+               
                 var query2 = from x in db.Users
                              where x.Pesel == txtPesel.Text
                              select x.Imie;
@@ -79,27 +82,33 @@ namespace WpfApp1
                 {
                     label = i.ToString();
                 }
-                var query3 = from x in db.Users
-                             where x.Pesel == txtPesel.Text
-                             select x.UserID;
-                foreach (var userid in query3)
-                {
-                    userID = userid; 
-                }
+                // - tu jest bląd chuj wie o co chodzi
+               //  db.Add(new Karty { UserID = db.Users.Where(x => x.Pesel == txtPesel.Text).FirstOrDefault().UserID, NrKarty = CardNumber, CVV = cvv });
 
             }
             MainWindow mw = new MainWindow();
             mw.IN.Text = "Witaj! " + label;
             mw.AccountBalance_TextBox.Text = balance.ToString() + " PLN";
+            mw.CardNum_TextBox.Text = CardNumber;
+            mw.CVV_TextBox.Text = cvv;
+            mw.ExpDate_TextBox.Text = ExpDate.ToString();
             mw.Show();
             this.Close();
-            mw.user = userID;
+           
         }
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             RegisterWindow rw = new RegisterWindow();
             rw.Show();
             this.Close();
+        }
+        public string RandomDigits(int length)
+        {
+            var random = new Random();
+            string s = string.Empty;
+            for (int i = 0; i < length; i++)
+                s = String.Concat(s, random.Next(10).ToString());
+            return s;
         }
     }
 }
