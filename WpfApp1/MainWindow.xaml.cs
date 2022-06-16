@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
+
 namespace WpfApp1
 {
     /// <summary>
@@ -22,6 +23,8 @@ namespace WpfApp1
           
 
         }
+
+        
         // Transfer button which open TransactionWindow
         private void Transfer_Button_Click(object sender, RoutedEventArgs e)
         {
