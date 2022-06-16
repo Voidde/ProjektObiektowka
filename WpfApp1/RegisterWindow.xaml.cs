@@ -30,7 +30,7 @@ namespace WpfApp1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string connectionString = @"Data Source=localhost;Initial Catalog=LocalDB;Integrated Security=True";
+            string connectionString = @"Data Source=LAPTOP-VHLI3BSD\SQLEXPRESS;Initial Catalog=LocalDB;Integrated Security=True";
             using (DatabaseContext db = new DatabaseContext(connectionString))
             {
                 bool isCorrect = false;

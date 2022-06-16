@@ -246,6 +246,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="kisspng-m-2j71-earth-world-globe-clip-art-global-vakanzi-clipart-5d2c8c6bbcc746.9969158315632006197732.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconmonstr-globe-5-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconmonstr-globe-5-120.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Img\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

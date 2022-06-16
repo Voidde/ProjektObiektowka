@@ -61,8 +61,8 @@ namespace WpfApp1
         public int UserID { get; set; }
         [Key]
         public string NrKarty { get; set; }
-       
-        public DateTime DataWaznosci { get; set; }
+
+        public DateTime DataWaznosci { get; set; } = DateTime.Now.AddYears(5);
         public string CVV { get; set; }
     }
     public class Adresy

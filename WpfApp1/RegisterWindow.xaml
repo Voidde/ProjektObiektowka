@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="RegisterWindow" Height="450" Width="800">
+        Title="RegisterWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="Imie" HorizontalAlignment="Left" Margin="106,50,0,0" VerticalAlignment="Top"/>
         <TextBox Name="txtImie" HorizontalAlignment="Left" Margin="163,54,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />

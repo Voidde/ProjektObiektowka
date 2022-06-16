@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="300">
+        Title="LoginWindow" Height="450" Width="300" WindowStartupLocation="CenterScreen">
+  
     <Grid x:Name="Login">
             <StackPanel Margin="20">
                 <Label Content="Login" Foreground="Black" FontSize="25" HorizontalAlignment="Center"/>

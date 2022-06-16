@@ -22,13 +22,16 @@ namespace WpfApp1
     /// </summary>
     public partial class LoginWindow : Window
     {
+        
         public LoginWindow()
         {
             InitializeComponent();
+          
         }
-        private void btnSubmit_Click(object sender, RoutedEventArgs e)
+       
+        public void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection s = new SqlConnection(@"Data Source=localhost;Initial Catalog=LocalDB;Integrated Security=True");
+            SqlConnection s = new SqlConnection(@"Data Source=LAPTOP-VHLI3BSD\SQLEXPRESS;Initial Catalog=LocalDB;Integrated Security=True");
 
             try
             {
@@ -36,16 +39,15 @@ namespace WpfApp1
                 {
                     s.Open();
                 }
-                string query = "SELECT COUNT(1) FROM Users WHERE Pesel ='" + txtPesel.Text + "' AND Haslo ='" + txtPassword.Password + "'" + ";
-                
+                string query = "SELECT COUNT(1) FROM Users WHERE Pesel ='" + txtPesel.Text + "' AND Haslo ='" + txtPassword.Password + "'";
                 SqlCommand sc = new SqlCommand(query, s);
                 sc.CommandType = CommandType.Text;
                 int count = Convert.ToInt32(sc.ExecuteScalar());
+                
+
                 if (count == 1)
                 {
-                    MainWindow mw = new MainWindow();
-                    mw.Show();
-                    this.Close();
+                    MW();
                 }
                 else
                 {
@@ -62,7 +64,37 @@ namespace WpfApp1
                 s.Close();
             }
         }
+        public void MW()
+        {
+            string label = "";
+            long balance = 0;
+            int userID = 0;
+            using (DatabaseContext db = new DatabaseContext(@"Data Source=LAPTOP-VHLI3BSD\SQLEXPRESS;Initial Catalog=LocalDB;Integrated Security=True"))
+            {
+                var query2 = from x in db.Users
+                             where x.Pesel == txtPesel.Text
+                             select x.Imie;
 
+                foreach (var i in query2)
+                {
+                    label = i.ToString();
+                }
+                var query3 = from x in db.Users
+                             where x.Pesel == txtPesel.Text
+                             select x.UserID;
+                foreach (var userid in query3)
+                {
+                    userID = userid; 
+                }
+
+            }
+            MainWindow mw = new MainWindow();
+            mw.IN.Text = "Witaj! " + label;
+            mw.AccountBalance_TextBox.Text = balance.ToString() + " PLN";
+            mw.Show();
+            this.Close();
+            mw.user = userID;
+        }
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             RegisterWindow rw = new RegisterWindow();
