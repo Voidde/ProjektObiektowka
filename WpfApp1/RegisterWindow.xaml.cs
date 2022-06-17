@@ -61,12 +61,14 @@ namespace WpfApp1
 
                 if (isCorrect == true && isCorrectPassword == true)
                 {
-                    db.Add(new Users { Imie = txtImie.Text, Nazwisko = txtNazwisko.Text, Haslo = txtHaslo.Password, Pesel = txtPesel.Text, NrTel = txtNrT.Text, Saldo = 0 });
+                    db.Add(new User { Imie = txtImie.Text, Nazwisko = txtNazwisko.Text, Haslo = txtHaslo.Password, Pesel = txtPesel.Text, NrTel = txtNrT.Text, Saldo = 0 });
                     db.SaveChanges();
 
-                    db.Add(new Adresy { UserID = db.Users.Where(x => x.Pesel == txtPesel.Text).FirstOrDefault().UserID, Adres = txtAdres.Text, KodPocztowy = txtKod.Text, Miasto = txtMiasto.Text });
+                    db.Add(new xAdres { UserID = db.Users.Where(x => x.Pesel == txtPesel.Text).FirstOrDefault().UserID, Adres = txtAdres.Text, KodPocztowy = txtKod.Text, Miasto = txtMiasto.Text });
                     db.SaveChanges();
 
+                    db.Add(new Karta { UserID = db.Users.Where(x => x.Pesel == txtPesel.Text).FirstOrDefault().UserID, CVV = RandomDigits(3), NrKarty = RandomDigits(16), DataWaznosci = DateTime.Parse(DateTime.Now.AddYears(5).ToString().Substring(0, 10)) });
+                    db.SaveChanges();
                     MessageBox.Show("Pomyslnie zarejestrowano, proszę się zalogować.");
 
 
@@ -78,6 +80,14 @@ namespace WpfApp1
                 }
 
             }
+        }
+        public string RandomDigits(int length)
+        {
+            var random = new Random();
+            string s = string.Empty;
+            for (int i = 0; i < length; i++)
+                s = String.Concat(s, random.Next(10).ToString());
+            return s;
         }
     }
 }

@@ -12,11 +12,11 @@ namespace WpfApp1
 {
     public class DatabaseContext : DbContext
     {
-        public DbSet<Users> Users { get; set; }
+        public DbSet<User> Users { get; set; }
 
-        public DbSet<Przelewy> Przelewy { get; set; }
-        public DbSet<Karty> Karty { get; set; }
-        public DbSet<Adresy> Adresy { get; set; }
+        public DbSet<Przelew> Przelewy { get; set; }
+        public DbSet<Karta> Karty { get; set; }
+        public DbSet<xAdres> Adresy { get; set; }
 
         public string ConnectionString { get; }
 
@@ -32,7 +32,7 @@ namespace WpfApp1
 
     }
   
-    public class Users
+    public class User
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
@@ -43,10 +43,10 @@ namespace WpfApp1
         public string Pesel { get; set; }
         public string NrTel { get; set; }
         public string Haslo { get; set; }
-        public long Saldo { get; set; }
+        public decimal Saldo { get; set; }
 
     }
-    public class Przelewy
+    public class Przelew
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -54,12 +54,12 @@ namespace WpfApp1
      
         public int UserID { get; set; }
         public DateTime DataPrzelewu {get; set; }
-        public long Kwota { get; set; }
+        public decimal Kwota { get; set; }
 
         public string NaKonto { get; set; }
 
     }
-    public class Karty
+    public class Karta
     {
         public int UserID { get; set; }
         [Key]
@@ -68,7 +68,7 @@ namespace WpfApp1
         public DateTime DataWaznosci { get; set; } = DateTime.Now.AddYears(5);
         public string CVV { get; set; }
     }
-    public class Adresy
+    public class xAdres
     {
         [Key]
         public int UserID { get; set; }

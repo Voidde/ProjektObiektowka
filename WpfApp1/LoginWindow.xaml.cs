@@ -31,6 +31,21 @@ namespace WpfApp1
 
         public void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
+            MainW();
+
+        }
+
+
+            private void btnRegister_Click(object sender, RoutedEventArgs e)
+            {
+            RegisterWindow rw = new RegisterWindow();
+            rw.Show();
+            this.Close();
+        }
+
+       
+        public void MainW()
+        {
             SqlConnection s = new SqlConnection(@"Data Source=localhost;Initial Catalog=LocalDB;Integrated Security=True");
 
             try
@@ -43,13 +58,7 @@ namespace WpfApp1
                 SqlCommand sc = new SqlCommand(query, s);
                 sc.CommandType = CommandType.Text;
                 int count = Convert.ToInt32(sc.ExecuteScalar());
-
-                if (txtPesel.Text == "ADMIN" && txtPassword.Password == "ADMIN")
-                {
-                    AdminWindow aw = new AdminWindow();
-                    aw.Show();
-                    this.Close();
-                }
+              
 
                 else if (count == 1)
                 {
@@ -60,23 +69,23 @@ namespace WpfApp1
                         MainWindow mw = new MainWindow();
                         var UID = db.Users.Where(x => x.Pesel.Equals(txtPesel.Text)).Select(x => x.UserID).FirstOrDefault();
 
+                        string imie = db.Users.Where(x => x.Pesel.Equals(txtPesel.Text)).Select(x => x.Imie).FirstOrDefault();
+                        string nazwisko = db.Users.Where(x => x.Pesel.Equals(txtPesel.Text)).Select(x => x.Nazwisko).FirstOrDefault();
+
+                        string ni = imie + " " + nazwisko;
+
                         mw.IN.Text = "Witaj " + db.Users.Where(x => x.Pesel.Equals(txtPesel.Text)).Select(x => x.Imie).FirstOrDefault();
+
+
                         mw.CardNum_TextBox.Text = db.Karty.Where(x => x.UserID.Equals(UID)).Select(x => x.NrKarty).FirstOrDefault().ToString();
                         mw.CVV_TextBox.Text = db.Karty.Where(x => x.UserID.Equals(UID)).Select(x => x.CVV).FirstOrDefault().ToString();
-                        mw.ExpDate_TextBox.Text = db.Karty.Where(x => x.UserID.Equals(UID)).Select(x => x.DataWaznosci).FirstOrDefault().ToString().Substring(0,10);
-                        mw.CardOwner_TextBox.Text = $"{db.Users.Where(x => x.Pesel.Equals(txtPesel.Text)).Select(x => x.Imie).FirstOrDefault()} { db.Users.Where(x => x.Pesel.Equals(txtPesel.Text)).Select(x => x.Nazwisko).FirstOrDefault()}";
-
-                        //long balance = db.Users.Where(x => x.Pesel.Equals(txtPesel.Text)).Select(x => x.Saldo).First();
-
-                        //mw.AccountBalance_TextBox.Text = balance.ToString();
-
-
-
-
+                        mw.ExpDate_TextBox.Text = db.Karty.Where(x => x.UserID.Equals(UID)).Select(x => x.DataWaznosci).FirstOrDefault().ToString().Substring(0, 10);
+                        mw.CardOwner_TextBox.Text = ni;
+                        mw.AccountBalance_TextBox.Text = $" {db.Users.Where(x => x.Pesel.Equals(txtPesel.Text)).Select(x => x.Saldo).First().ToString()}";
                         mw.Show();
                         this.Close();
                     }
-                    
+
                 }
                 else
                 {
@@ -95,13 +104,6 @@ namespace WpfApp1
         }
 
 
-            private void btnRegister_Click(object sender, RoutedEventArgs e)
-            {
-            RegisterWindow rw = new RegisterWindow();
-            rw.Show();
-            this.Close();
-            }
-        
     }
 }
 
