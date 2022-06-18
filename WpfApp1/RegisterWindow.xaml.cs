@@ -29,6 +29,8 @@ namespace WpfApp1
 
         }
 
+
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string connectionString = @"Data Source=localhost;Initial Catalog=LocalDB;Integrated Security=True";
@@ -38,23 +40,36 @@ namespace WpfApp1
                 bool isCorrectPassword = false;
 
 
-                if (txtPesel.Text.Length != 11 || txtNrT.Text.Length != 9 || txtKod.Text.Length !=6 || txtImie.Text.Length == 0 || txtNazwisko.Text.Length == 0 || txtMiasto.Text.Length == 0 || txtAdres.Text.Length == 0 )
-                    {
-                        MessageBox.Show("Sprawdz wpisane przez Ciebie dane.");
-                    }
-                    else
-                    {
-                        isCorrect = true;
-                    }
-                if (txtHaslo.Password != txtHaslo2.Password)
+                if (txtPesel.Text.Length != 11 || txtNrT.Text.Length != 9 || txtKod.Text.Length != 6 || txtImie.Text.Length == 0 || txtNazwisko.Text.Length == 0 || txtMiasto.Text.Length == 0 || txtAdres.Text.Length == 0)
                 {
-                    MessageBox.Show("Hasła różnią się od siebie.");
+                    MessageBox.Show("Sprawdz wpisane przez Ciebie dane.");
+                }
+
+                else if (!txtPesel.Text.All(char.IsDigit))
+                {
+                    MessageBox.Show("Pesel może zawierać tylko cyfry.");
+                }
+                else
+                {
+                    isCorrect = true;
+                }
+
+                if (txtHaslo.Password.Length < 8 || !txtHaslo.Password.Any(char.IsUpper) || !txtHaslo.Password.Any(char.IsLower) || !txtHaslo.Password.Any(char.IsDigit) || !txtHaslo.Password.Any(char.IsPunctuation))
+                {
+                    MessageBox.Show("Hasło musi mieć co najmniej 8 znaków, jedną dużą literę, jedną małą literę, jedną cyfrę i jeden znak specjalny.");
+                }
+                else if (txtHaslo != txtHaslo2)
+                {
+                    MessageBox.Show("Hasła nie są identyczne.");
                 }
                 else
                 {
                     isCorrectPassword = true;
                 }
-                    
+
+
+
+
 
                 LoginWindow lw = new LoginWindow();
             

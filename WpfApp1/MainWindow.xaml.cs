@@ -31,13 +31,13 @@ namespace WpfApp1
             {
                 
                 var UIDq = db.Karty.Where(x => x.NrKarty.Equals(CardNum_TextBox.Text)).Select(x => x.UserID).FirstOrDefault();
-                var Saldoq = db.Users.Where(x => x.UserID.Equals(UIDq)).Select(x => x.Saldo).FirstOrDefault();    
-               
-                if (AccountNumber_Button.Text.Length == 0 || Amount_button.Text.Length == 0 || dpDate.Text.Length == 0 )
+                var Saldoq = db.Users.Where(x => x.UserID.Equals(UIDq)).Select(x => x.Saldo).FirstOrDefault();
+
+                if (AccountNumber_Button.Text.Length == 0 || Amount_button.Text.Length == 0 || dpDate.Text.Length == 0 || Amount_button.Text.Any(char.IsLetter) || !Amount_button.Text.All(char.IsDigit) )
                 {
-                    MessageBox.Show("Wprowadz dane do przelewu.");
+                    MessageBox.Show("Wprowadz poprawdne dane do przelewu.");
                 }
-                else if (decimal.Parse(Amount_button.Text) <= 0)
+                else if (decimal.Parse(Amount_button.Text) <= 0 )
                 {
                     MessageBox.Show("Kwota przelewu powinna być większa od 0");
                 }
@@ -58,7 +58,8 @@ namespace WpfApp1
 
                     user1.Saldo = user1.Saldo - przelew;
                     db.SaveChanges();
-
+                    this.UpdateLayout();
+                    
 
                     try
                     {
@@ -72,15 +73,23 @@ namespace WpfApp1
                     catch (System.NullReferenceException)
                     {
                     }
-                    
+
                 }
             }
-}
+        }
 
-
-            }
-
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow lw = new LoginWindow();
+            lw.Show();
+            this.Close();
+        }
     }
+
+
+ }
+
+
+   
     
 

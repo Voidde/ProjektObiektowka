@@ -42,23 +42,48 @@ namespace WpfApp1
             this.Close();
         }
 
-       
+
+        /// <summary>
+        /// Funkcja zawierająca część logiki MainWindow i wywołująca MainWindow.
+        /// Logowanie użytkownika.
+        /// <param name="s">
+        /// Połączenie z lokalną bazą danych LocalDB.
+        /// </param>
+        /// <param name="query">
+        /// Query bazodanowe wybierające użytkownika na podstawie wpisanego Peselu oraz Hasła.
+        /// </param>
+        /// <param name="count">
+        /// Zmienna ktora przechowuje informacje o tym czy query zostało wykonanie i na tej podstawie odbywa sie sprawdzanie czy mozna zalogowac uzytkownika.
+        /// </param>
+        /// <param name="UID">
+        /// Method-based syntax query zwracające UserID zalogowanego użytkownika.
+        /// </param>
+        /// <param name="imie">
+        /// Method-based syntax query zwracające Imie zalogowanego użytkownika.
+        /// </param>
+        /// <param name="nazwisko">
+        /// Method-based syntax query zwracające Nazwisko zalogowanego użytkownika.
+        /// </summary>
         public void MainW()
         {
             SqlConnection s = new SqlConnection(@"Data Source=localhost;Initial Catalog=LocalDB;Integrated Security=True");
 
+            
             try
             {
                 if (s.State == ConnectionState.Closed)
                 {
                     s.Open();
                 }
-                string query = "SELECT COUNT(1) FROM Users WHERE Pesel ='" + txtPesel.Text + "' AND Haslo ='" + txtPassword.Password + "'";
+
+                
+                string query = "SELECT COUNT(1) FROM Users WHERE Pesel ='" + txtPesel.Text + "' AND Haslo ='" + txtPassword.Password + "'";              
                 SqlCommand sc = new SqlCommand(query, s);
                 sc.CommandType = CommandType.Text;
                 int count = Convert.ToInt32(sc.ExecuteScalar());
               
 
+                
                  if (count == 1)
                 {
 

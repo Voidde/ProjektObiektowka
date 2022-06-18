@@ -13,7 +13,7 @@
                 <Separator></Separator>
                 <Label Content="Pesel" Foreground="Black" Margin="35" FontSize="15" HorizontalAlignment="Center"/>
 
-                <TextBox Name="txtPesel" Background="Gray" Foreground="White" FontSize="18" />
+                <TextBox Name="txtPesel" MaxLength="11" Background="Gray" Foreground="White" FontSize="18" />
 
                 <Label Content="Hasło" Foreground="Black" Margin="20" FontSize="15" HorizontalAlignment="Center"/>
                 <PasswordBox Name="txtPassword" Background="Gray" Foreground="White" FontSize="18" />
