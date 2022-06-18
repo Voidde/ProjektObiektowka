@@ -18,14 +18,6 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
 
-        public string RandomDigits(int length)
-        {
-            var random = new Random();
-            string s = string.Empty;
-            for (int i = 0; i < length; i++)
-                s = String.Concat(s, random.Next(10).ToString());
-            return s;
-        }
 
         public MainWindow()
         {
@@ -49,7 +41,7 @@ namespace WpfApp1
                 {
                     MessageBox.Show("Kwota przelewu powinna być większa od 0");
                 }
-                else if (decimal.Parse(Amount_button.Text) > Saldoq )
+                else if (decimal.Parse(Amount_button.Text) > Saldoq)
                 {
                     MessageBox.Show("Zbyt niskie saldo");
                 }
@@ -67,6 +59,20 @@ namespace WpfApp1
                     user1.Saldo = user1.Saldo - przelew;
                     db.SaveChanges();
 
+
+                    try
+                    {
+                        User user2 = db.Users.Where(x => x.UserID.Equals(int.Parse(AccountNumber_Button.Text))).FirstOrDefault();
+                        if (!user2.Equals(null))
+                        {
+                            user2.Saldo = user2.Saldo + przelew;
+                            db.SaveChanges();
+                        }
+                    }
+                    catch (System.NullReferenceException)
+                    {
+                    }
+                    
                 }
             }
 }

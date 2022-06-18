@@ -26,7 +26,6 @@ namespace WpfApp1
         public LoginWindow()
         {
             InitializeComponent();
-
         }
 
         public void btnSubmit_Click(object sender, RoutedEventArgs e)
@@ -60,7 +59,7 @@ namespace WpfApp1
                 int count = Convert.ToInt32(sc.ExecuteScalar());
               
 
-                else if (count == 1)
+                 if (count == 1)
                 {
 
                     string connectionString = @"Data Source=localhost;Initial Catalog=LocalDB;Integrated Security=True";
