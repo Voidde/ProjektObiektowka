@@ -14,7 +14,6 @@
         </Grid.ColumnDefinitions>
 
         <TextBox Name="IN" Text="Imie i nazwisko" TextWrapping="Wrap" Margin="423.6,655,9.6,69.4" UndoLimit="98" FontSize="30" Grid.Column="1" IsEnabled="False"/>
-        <ComboBox x:Name="Transactions_ComboBox" Margin="634.6,10,9.6,336.4" Grid.Column="1"/>
         <TextBox x:Name="AccountBalance_TextBox" Text="Stan konta:" TextWrapping="Wrap" Margin="423.6,706,-0.4,0.4" Grid.Column="1" FlowDirection="LeftToRight" FontSize="30" IsEnabled="False"/>
         <Rectangle Fill="#FFD8D8EB" HorizontalAlignment="Left" Height="190" Stroke="Black" VerticalAlignment="Center" Width="570" Margin="10,10,0,570.4" Grid.ColumnSpan="2"/>
         <TextBox x:Name="CardNum_TextBox" Text="1234 1234 1234 1234"  TextAlignment="Center" TextWrapping="Wrap" Margin="46,31,642.6,705.4" Background="White" FontSize="20" VerticalAlignment="Center" Height="34" Grid.ColumnSpan="2" IsEnabled="False"/>
@@ -27,6 +26,8 @@
         <Button Name="btnApply" Content="Zatwierdź" Margin="10,550,835.6,174.4" Grid.ColumnSpan="2" Click="btnApply_Click"/>
         <Image Grid.Column="1" Margin="448.6,10,398.6,640.4" Source="iconmonstr-globe-5-120.png" Stretch="Fill"/>
         <Button Content="Wyloguj" Grid.Column="1" HorizontalAlignment="Left" Margin="811,595,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button x:Name="btnRefresh" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="857,453,0,0" Click="btnRefresh_Click"/>
+        <ListBox x:Name="Transaction_ListBox" HorizontalAlignment="Left" Height="429" VerticalAlignment="Top" Width="272" Grid.Column="1" Margin="684,19,0,0"/>
 
     </Grid>
 </Window>

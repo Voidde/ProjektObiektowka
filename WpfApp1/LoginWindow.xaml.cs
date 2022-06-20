@@ -66,7 +66,7 @@ namespace WpfApp1
         /// </summary>
         public void MainW()
         {
-            SqlConnection s = new SqlConnection(@"Data Source=localhost;Initial Catalog=LocalDB;Integrated Security=True");
+            SqlConnection s = new SqlConnection(@"Data Source=DESKTOP-F09P8H4\SQLEXPRESS;Initial Catalog=LocalDB;Integrated Security=True");
 
             
             try
@@ -87,7 +87,7 @@ namespace WpfApp1
                  if (count == 1)
                 {
 
-                    string connectionString = @"Data Source=localhost;Initial Catalog=LocalDB;Integrated Security=True";
+                    string connectionString = @"Data Source=DESKTOP-F09P8H4\SQLEXPRESS;Initial Catalog=LocalDB;Integrated Security=True";
                     using (DatabaseContext db = new DatabaseContext(connectionString))
                     {
                         MainWindow mw = new MainWindow();

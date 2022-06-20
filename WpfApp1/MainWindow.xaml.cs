@@ -22,11 +22,15 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            
         }
-
+        SqlConnection cn;
+        SqlCommand cmd;
+        SqlDataReader dr;
+        // adding data to credit card and amount of the account to main window
         private void btnApply_Click(object sender, RoutedEventArgs e)
         {
-            string connectionString = @"Data Source=localhost;Initial Catalog=LocalDB;Integrated Security=True";
+            string connectionString = @"Data Source=DESKTOP-F09P8H4\SQLEXPRESS;Initial Catalog=LocalDB;Integrated Security=True";
             using (DatabaseContext db = new DatabaseContext(connectionString))
             {
                 
@@ -77,12 +81,39 @@ namespace WpfApp1
                 }
             }
         }
+        // Binding data to list box
+        private void BindComboBox_Load(object sender, EventArgs e)
+        {
+            cn = new SqlConnection(@"Data Source=DESKTOP-F09P8H4\SQLEXPRESS;Initial Catalog=LocalDB;Integrated Security=True");
+            cn.Open();
 
+            BindData();
+        }
+        public void BindData()
+        {
+            //cmd = new SqlCommand("select  Kwota  from Przelewy WHERE UserID == this.UIDq", cn);
+            //dr = cmd.ExecuteReader();
+            //while (dr.Read())
+            //{
+            //   Transaction_ListBox.Items.Add(dr[0].ToString());
+            //}
+            //dr.Close();
+        }
+        // logout button
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             LoginWindow lw = new LoginWindow();
             lw.Show();
             this.Close();
+          
+        }
+        // refreshing button for listbox
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            Transaction_ListBox.Items.Clear();
+            BindComboBox_Load( sender,e);
+
         }
     }
 

@@ -30,10 +30,10 @@ namespace WpfApp1
         }
 
 
-
+        // checking if every registration data is correct 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string connectionString = @"Data Source=localhost;Initial Catalog=LocalDB;Integrated Security=True";
+            string connectionString = @"Data Source=DESKTOP-F09P8H4\SQLEXPRESS;Initial Catalog=LocalDB;Integrated Security=True";
             using (DatabaseContext db = new DatabaseContext(connectionString))
             {
                 bool isCorrect = false;
@@ -58,7 +58,7 @@ namespace WpfApp1
                 {
                     MessageBox.Show("Hasło musi mieć co najmniej 8 znaków, jedną dużą literę, jedną małą literę, jedną cyfrę i jeden znak specjalny.");
                 }
-                else if (txtHaslo != txtHaslo2)
+                else if (txtHaslo.Password != txtHaslo2.Password)
                 {
                     MessageBox.Show("Hasła nie są identyczne.");
                 }
@@ -72,7 +72,7 @@ namespace WpfApp1
 
 
                 LoginWindow lw = new LoginWindow();
-            
+            // registration of new user
 
                 if (isCorrect == true && isCorrectPassword == true)
                 {
@@ -96,6 +96,7 @@ namespace WpfApp1
 
             }
         }
+        // random number generation method for credit card 
         public string RandomDigits(int length)
         {
             var random = new Random();
