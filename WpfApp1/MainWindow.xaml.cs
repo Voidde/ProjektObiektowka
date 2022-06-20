@@ -91,13 +91,13 @@ namespace WpfApp1
         }
         public void BindData()
         {
-            //cmd = new SqlCommand("select  Kwota  from Przelewy WHERE UserID == this.UIDq", cn);
-            //dr = cmd.ExecuteReader();
-            //while (dr.Read())
-            //{
-            //   Transaction_ListBox.Items.Add(dr[0].ToString());
-            //}
-            //dr.Close();
+            cmd = new SqlCommand("select  Kwota  from Przelewy", cn);
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                Transaction_ListBox.Items.Add(dr[0].ToString());
+            }
+            dr.Close();
         }
         // logout button
         private void Button_Click(object sender, RoutedEventArgs e)
