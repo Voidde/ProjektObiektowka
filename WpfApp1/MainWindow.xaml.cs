@@ -1,13 +1,8 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 
 
 namespace WpfApp1
@@ -27,10 +22,11 @@ namespace WpfApp1
         SqlConnection cn;
         SqlCommand cmd;
         SqlDataReader dr;
+        bool PlusMinus = false;
         // adding data to credit card and amount of the account to main window
         private void btnApply_Click(object sender, RoutedEventArgs e)
         {
-            string connectionString = @"Data Source=DESKTOP-F09P8H4\SQLEXPRESS;Initial Catalog=LocalDB;Integrated Security=True";
+            string connectionString = @"Data Source=LAPTOP-VHLI3BSD\SQLEXPRESS;Initial Catalog=LocalDB;Integrated Security=True";
             using (DatabaseContext db = new DatabaseContext(connectionString))
             {
                 
@@ -71,11 +67,13 @@ namespace WpfApp1
                         if (!user2.Equals(null))
                         {
                             user2.Saldo = user2.Saldo + przelew;
+                            PlusMinus = true;
                             db.SaveChanges();
                         }
                     }
                     catch (System.NullReferenceException)
                     {
+                        MessageBox.Show("Bledny numer konta");
                     }
 
                 }
@@ -84,7 +82,7 @@ namespace WpfApp1
         // Binding data to list box
         private void BindComboBox_Load(object sender, EventArgs e)
         {
-            cn = new SqlConnection(@"Data Source=DESKTOP-F09P8H4\SQLEXPRESS;Initial Catalog=LocalDB;Integrated Security=True");
+            cn = new SqlConnection(@"Data Source=LAPTOP-VHLI3BSD\SQLEXPRESS;Initial Catalog=LocalDB;Integrated Security=True");
             cn.Open();
 
             BindData();
@@ -95,7 +93,12 @@ namespace WpfApp1
             dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                Transaction_ListBox.Items.Add(dr[0].ToString());
+                if (PlusMinus == true)
+                {
+                    Transaction_ListBox.Items.Add("+" + dr[0].ToString());
+                }
+                else
+                    Transaction_ListBox.Items.Add("-" + dr[0].ToString());
             }
             dr.Close();
         }

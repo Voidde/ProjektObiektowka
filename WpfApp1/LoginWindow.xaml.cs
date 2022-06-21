@@ -1,20 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Data.SqlClient;
-using System.Data.Sql;
 using System.Data;
-using Microsoft.EntityFrameworkCore;
 namespace WpfApp1
 {
     /// <summary>
@@ -66,7 +54,7 @@ namespace WpfApp1
         /// </summary>
         public void MainW()
         {
-            SqlConnection s = new SqlConnection(@"Data Source=DESKTOP-F09P8H4\SQLEXPRESS;Initial Catalog=LocalDB;Integrated Security=True");
+            SqlConnection s = new SqlConnection(@"Data Source=LAPTOP-VHLI3BSD\SQLEXPRESS;Initial Catalog=LocalDB;Integrated Security=True");
 
             
             try
@@ -87,7 +75,7 @@ namespace WpfApp1
                  if (count == 1)
                 {
 
-                    string connectionString = @"Data Source=DESKTOP-F09P8H4\SQLEXPRESS;Initial Catalog=LocalDB;Integrated Security=True";
+                    string connectionString = @"Data Source=LAPTOP-VHLI3BSD\SQLEXPRESS;Initial Catalog=LocalDB;Integrated Security=True";
                     using (DatabaseContext db = new DatabaseContext(connectionString))
                     {
                         MainWindow mw = new MainWindow();

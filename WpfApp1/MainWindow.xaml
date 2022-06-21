@@ -27,7 +27,7 @@
         <Image Grid.Column="1" Margin="448.6,10,398.6,640.4" Source="iconmonstr-globe-5-120.png" Stretch="Fill"/>
         <Button Content="Wyloguj" Grid.Column="1" HorizontalAlignment="Left" Margin="811,595,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Button x:Name="btnRefresh" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="857,453,0,0" Click="btnRefresh_Click"/>
-        <ListBox x:Name="Transaction_ListBox" HorizontalAlignment="Left" Height="429" VerticalAlignment="Top" Width="272" Grid.Column="1" Margin="684,19,0,0"/>
+        <ListBox x:Name="Transaction_ListBox" HorizontalAlignment="Left" FontSize="24" Height="429" VerticalAlignment="Top" Width="272" Grid.Column="1" Margin="684,19,0,0" BorderThickness="0"/>
 
     </Grid>
 </Window>

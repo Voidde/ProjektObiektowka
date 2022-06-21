@@ -33,7 +33,7 @@ namespace WpfApp1
         // checking if every registration data is correct 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string connectionString = @"Data Source=DESKTOP-F09P8H4\SQLEXPRESS;Initial Catalog=LocalDB;Integrated Security=True";
+            string connectionString = @"Data Source=LAPTOP-VHLI3BSD\SQLEXPRESS;Initial Catalog=LocalDB;Integrated Security=True";
             using (DatabaseContext db = new DatabaseContext(connectionString))
             {
                 bool isCorrect = false;
